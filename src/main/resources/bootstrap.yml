@@ -1,0 +1,8 @@
+# 默认激活dev运行配置
+server.port: 8888
+#最大线程数
+server.tomcat.max-threads: 600
+#最大等待请求数
+server.tomcat.accept-count: 400
+#最大连接数
+server.tomcat.max-connections: 10000

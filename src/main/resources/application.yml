@@ -1,0 +1,22 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  jpa:
+    hibernate.ddl-auto: none
+    show-sql: true
+
+#机器人微信nickName
+bot.botName: 狂追风龙少
+#Openai的appkey
+bot.appkey: 
+#微信登录二维码生成路径
+bot.wechat.qrcode.path: D://itchat4j/login
+
+#ai模型配置 参考https://platform.openai.com/examples
+bot.openai.completio.model: text-davinci-003
+bot.openai.completio.temperature: 0.9
+bot.openai.completio.max_tokens: 2000
+bot.openai.completio.top_p: 1
+bot.openai.completio.frequency_penalty: 0.0
+bot.openai.completio.presence_penalty: 0.6
+bot.openai.completio.stop: 
