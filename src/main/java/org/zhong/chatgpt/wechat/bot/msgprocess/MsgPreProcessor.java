@@ -61,6 +61,9 @@ public class MsgPreProcessor implements MsgProcessor{
 		
 		
 		if (baseMsg.getType().equals(MsgTypeEnum.TEXT.getType())) {
+			
+			baseMsg.setContent(baseMsg.getContent().replace(BotConfig.getAtBotName(), ""));
+			
 			String content = baseMsg.getContent();
 			if(StringUtils.isEmpty(content)) {
 				//丢弃

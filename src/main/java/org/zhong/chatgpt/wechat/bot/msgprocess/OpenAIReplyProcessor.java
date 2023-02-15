@@ -82,7 +82,19 @@ public class OpenAIReplyProcessor implements MsgProcessor{
 			WehchatMsgQueue.pushSendMsg(botMsg);
 		}catch (Exception e) {
 			e.printStackTrace();
-			WehchatMsgQueue.pushReplyMsg(botMsg);
+			
+			botMsg.setRetries(botMsg.getRetries() + 1);
+			if(botMsg.getRetries() < 5) {
+				WehchatMsgQueue.pushReplyMsg(botMsg);
+			}else {
+				String recontent = baseMsg.getContent();
+				if(recontent.length() > 20) {
+					recontent = recontent.substring(0, 17) + "...\n";
+				}
+				botMsg.setReplyMsg(recontent+ "该提问已失效，请重新提问");
+				WehchatMsgQueue.pushSendMsg(botMsg);
+			}
+			
 		}
 		
 	}
