@@ -10,6 +10,12 @@ application.yml
 groupWhiteList.txt 群聊白名单配置，不配置默认不处理全部群消息
 userWhiteList.txt  私聊白名单配置，不配置默认回复所有私聊消息
 
+```
+Bot.buildChatGPTWechatBot().start(); //使用ChatGPT
+Bot.buildOpenAIWechatBot().start(); //使用openAI(GPT3)
+Bot.buildChatGPTConsoleBot().start();//使用控制台作为消息输入输出(目前只支持Eclipse)
+
+```
 ## 架构说明
 ```
 原理
@@ -20,6 +26,6 @@ Openai线程 -> 待回复队列出队列，请求openai，失败入队列并等�
 
 直接引入代码的开源包：
 itchat4j 增加了一些基本属性：群名称、发送用户名称等。
-theokanning 忽略https认证
+
 
 ```
