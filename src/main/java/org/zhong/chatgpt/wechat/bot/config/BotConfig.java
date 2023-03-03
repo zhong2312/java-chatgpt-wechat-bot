@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.yaml.snakeyaml.Yaml;
 import org.zhong.chatgpt.wechat.bot.consts.BotConst;
 
@@ -37,6 +38,10 @@ public class BotConfig {
 		botName = yamlMap.get("bot.botName");
 		appKey = yamlMap.get("bot.appkey");
 		qrcodePath = yamlMap.get("bot.wechat.qrcode.path");
+		
+		if(StringUtils.isEmpty(appKey)) {
+			appKey = System.getProperty("appKey");
+		}
 	}
 
 	public static String getBotName() {

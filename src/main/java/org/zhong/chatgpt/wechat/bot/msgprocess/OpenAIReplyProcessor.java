@@ -8,19 +8,25 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.yaml.snakeyaml.Yaml;
+import org.zhong.chatgpt.wechat.bot.builder.OpenAiServiceBuilder;
 import org.zhong.chatgpt.wechat.bot.config.BotConfig;
 import org.zhong.chatgpt.wechat.bot.consts.BotConst;
 import org.zhong.chatgpt.wechat.bot.model.BotMsg;
 import org.zhong.chatgpt.wechat.bot.model.WehchatMsgQueue;
 
-import com.theokanning.openai.OpenAiService;
 import com.theokanning.openai.completion.CompletionRequest;
+import com.theokanning.openai.service.OpenAiService;
 
 import cn.zhouyafeng.itchat4j.beans.BaseMsg;
 
+/**
+ * 使用普通OpenAI接口进行回复
+ * @author zhong
+ *
+ */
 public class OpenAIReplyProcessor implements MsgProcessor{
 
-	OpenAiService service = new OpenAiService(BotConfig.getAppKey(), Duration.ofSeconds(300));
+	private static OpenAiService service = OpenAiServiceBuilder.build(BotConfig.getAppKey(), Duration.ofSeconds(300));
 	
 	private static String model = "text-davinci-003";
 	private static Double temperature = 0.9;
@@ -46,18 +52,13 @@ public class OpenAIReplyProcessor implements MsgProcessor{
 		if(StringUtils.isNotEmpty(stopsStr)) {
 			stops = Arrays.asList(stopsStr.split(","));
 		}
+    	
 	}
 	
 	@Override
 	public void process(BotMsg botMsg) {
-		BaseMsg baseMsg = botMsg.getBaseMsg();
-		String user = "";
-		if(baseMsg.isGroupMsg()) {
-			user = baseMsg.getGroupUserName();
-		}else {
-			user = baseMsg.getFromUserName();
-		}
 		
+		BaseMsg baseMsg = botMsg.getBaseMsg();
 		CompletionRequest completionRequest = CompletionRequest.builder()
 		        .prompt(baseMsg.getContent())
 		        .model(model)
@@ -67,19 +68,15 @@ public class OpenAIReplyProcessor implements MsgProcessor{
 				.frequencyPenalty(frequencyPenalty)
 				.presencePenalty(presencePenalty)
 				.echo(true)
-				.user(user)
+				.user(botMsg.getUserName())
 				.build();
 		
 		try {
 	
 			String text = service.createCompletion(completionRequest).getChoices().get(0).getText();
-			if(baseMsg.isGroupMsg()) {
-				botMsg.setReplyMsg(BotConst.AT + baseMsg.getGroupUserNickName()+ " " + text);
-			}else {
-				botMsg.setReplyMsg(text);
-			}
-			
+			botMsg.setReplyMsg(text);
 			WehchatMsgQueue.pushSendMsg(botMsg);
+			
 		}catch (Exception e) {
 			e.printStackTrace();
 			

@@ -1,4 +1,4 @@
-package com.theokanning.openai;
+package org.zhong.chatgpt.wechat.bot.util;
 
 import javax.net.ssl.*;
 import java.security.SecureRandom;

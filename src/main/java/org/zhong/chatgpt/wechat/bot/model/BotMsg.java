@@ -1,5 +1,7 @@
 package org.zhong.chatgpt.wechat.bot.model;
 
+import org.zhong.chatgpt.wechat.bot.consts.BotConst;
+
 import cn.zhouyafeng.itchat4j.beans.BaseMsg;
 
 public class BotMsg{
@@ -34,6 +36,14 @@ public class BotMsg{
 		this.baseMsg = baseMsg;
 	}
 
+	public String getUserName() {
+		if(baseMsg.isGroupMsg()) {
+			return baseMsg.getGroupUserName();
+		}else {
+			return baseMsg.getFromUserName();
+		}
+	}
+	
 	public boolean isCheck() {
 		return isCheck;
 	}
@@ -47,7 +57,11 @@ public class BotMsg{
 	}
 
 	public void setReplyMsg(String replyMsg) {
-		this.replyMsg = replyMsg;
+		if(baseMsg.isGroupMsg()) {
+			this.replyMsg = BotConst.AT + baseMsg.getGroupUserNickName()+ " " + replyMsg;
+		}else {
+			this.replyMsg = replyMsg;
+		}
 	}
 
 	public int getRetries() {
@@ -65,6 +79,8 @@ public class BotMsg{
 	public void setBaseMsg(BaseMsg baseMsg) {
 		this.baseMsg = baseMsg;
 	}
+	
+	
 	
 	
 	

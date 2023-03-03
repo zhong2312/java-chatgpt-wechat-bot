@@ -1,16 +1,20 @@
 package org.zhong.chatgpt.wechat.bot.model;
 
-import java.util.LinkedList;
+import java.util.concurrent.LinkedBlockingQueue;
 
-public class BotMsgLinkedList extends LinkedList<BotMsg>{
+public class BotMsgLinkedList extends LinkedBlockingQueue<BotMsg>{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public BotMsg nullPop() {
-		return this.isEmpty() ? null : this.pop();
+	public BotMsg blockPop() throws InterruptedException {
+		return this.take();
+	}
+	
+	public void blockPush(BotMsg botMsg) throws InterruptedException {
+		this.put(botMsg);
 	}
 	
 	public long countGroupUserMsg(String groupUserName) {
