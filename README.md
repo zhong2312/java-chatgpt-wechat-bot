@@ -20,6 +20,12 @@ Bot.buildChatGPTWechatBot().start(); //使用ChatGPT
 Bot.buildOpenAIWechatBot().start(); //使用openAI(GPT3)
 Bot.buildChatGPTConsoleBot().start();//使用控制台作为消息输入输出(目前只支持Eclipse)
 
+API被墙了，需要使用代理，在application.yml文件配置代理：
+#代理设置
+proxy.enable: true
+proxy.host: 127.0.0.1
+proxy.port: 33211
+
 ```
 ## 架构说明
 ```
@@ -32,5 +38,9 @@ Openai线程 -> 待回复队列出队列，请求openai，失败入队列并等�
 直接引入代码的开源包：
 itchat4j 增加了一些基本属性：群名称、发送用户名称等。
 
-
+使用SpringBoot是因为后续计划支持web界面操作：
+1.支持多个机器人实例
+2.支持多节点调度
+3.支持在线停启
+4.支持对话调度等。
 ```

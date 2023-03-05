@@ -20,6 +20,12 @@ public class BotConfig {
 	
 	private static String qrcodePath = "";
 	
+	private static String proxyHost = "";
+	
+	private static int proxyPort = 0;
+	
+	private static Boolean proxyEnable = false;
+	
 	private static List<String> groupWhiteList = new ArrayList<String>(); 
 	
 	private static List<String> userWhiteList = new ArrayList<String>(); 
@@ -33,14 +39,26 @@ public class BotConfig {
 		userWhiteList = userFileReader.readLines();
 		
 		final Yaml yaml = new Yaml();
-		Map<String, String> yamlMap = yaml.load(BotConfig.class.getResourceAsStream("/application.yml"));
+		Map<String, Object> yamlMap = yaml.load(BotConfig.class.getResourceAsStream("/application.yml"));
 
-		botName = yamlMap.get("bot.botName");
-		appKey = yamlMap.get("bot.appkey");
-		qrcodePath = yamlMap.get("bot.wechat.qrcode.path");
+		botName = yamlMap.get("bot.botName").toString();
+		qrcodePath = yamlMap.get("bot.wechat.qrcode.path").toString();
+		Object objAppKey = yamlMap.get("bot.appkey");
 		
-		if(StringUtils.isEmpty(appKey)) {
-			appKey = System.getProperty("appKey");
+		Object enable = yamlMap.get("proxy.enable");
+		if(enable != null) {
+			proxyEnable = Boolean.valueOf(enable.toString());
+		}
+		
+		if(proxyEnable) {
+			proxyHost = yamlMap.get("proxy.host").toString();
+			proxyPort = Integer.valueOf(yamlMap.get("proxy.port").toString());
+		}
+		
+		if(objAppKey == null ) {
+			appKey = System.getProperty("bot.appKey");
+		}else {
+			appKey = objAppKey.toString();
 		}
 	}
 
@@ -92,7 +110,32 @@ public class BotConfig {
 		BotConfig.qrcodePath = qrcodePath;
 	}
 
+	public static String getProxyHost() {
+		return proxyHost;
+	}
 
+	public static void setProxyHost(String proxyHost) {
+		BotConfig.proxyHost = proxyHost;
+	}
+
+	public static int getProxyPost() {
+		return proxyPort;
+	}
+
+	public static void setProxyPost(int proxyPost) {
+		BotConfig.proxyPort = proxyPost;
+	}
+
+	public static Boolean getProxyEnable() {
+		return proxyEnable;
+	}
+
+	public static void setProxyEnable(Boolean proxyEnable) {
+		BotConfig.proxyEnable = proxyEnable;
+	}
+
+
+	
 	
 	
 	

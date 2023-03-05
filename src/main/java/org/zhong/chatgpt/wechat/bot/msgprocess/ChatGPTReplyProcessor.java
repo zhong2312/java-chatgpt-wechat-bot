@@ -62,8 +62,10 @@ public class ChatGPTReplyProcessor implements MsgProcessor{
 
 	        List<ChatCompletionChoice> choices = service.createChatCompletion(chatCompletionRequest).getChoices();
 	        String text = choices.get(0).getMessage().getContent();
+	        
 	        ChatMessage assistantMessage = new ChatMessage(ChatMessageRole.ASSISTANT.value(), text);
 	        messages.add(assistantMessage);
+	        mgsMap.put(userName, messages);
 	        
 			botMsg.setReplyMsg(text);
 			WehchatMsgQueue.pushSendMsg(botMsg);

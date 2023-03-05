@@ -50,8 +50,7 @@ public class Bot {
 	public static Bot buildChatGPTConsoleBot() {
 		return builder()
 				.msgPreProcessor(new MsgPreProcessor())
-				//.replyProcessor(new ChatGPTReplyProcessor())
-				.replyProcessor(new OpenAIReplyProcessor())
+				.replyProcessor(new ChatGPTReplyProcessor())
 				.sendProcessor(new ConsoleSendProcessor())
 				.msgAcceptor(new ConsoleMsgAcceptor());
 	}

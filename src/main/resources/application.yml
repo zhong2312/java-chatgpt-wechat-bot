@@ -20,3 +20,8 @@ bot.openai.completio.top_p: 1
 bot.openai.completio.frequency_penalty: 0.0
 bot.openai.completio.presence_penalty: 0.6
 bot.openai.completio.stop: 
+
+#代理设置
+proxy.enable: true
+proxy.host: 127.0.0.1
+proxy.port: 33211

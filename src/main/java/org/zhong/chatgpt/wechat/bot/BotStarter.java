@@ -5,8 +5,7 @@ import org.zhong.chatgpt.wechat.bot.model.Bot;
 public class BotStarter {
 
 	public static void main(String[] args) {
-		//Bot.buildOpenAIBot().start();
-		
+		//Bot.buildOpenAIWechatBot().start();
 		Bot.buildChatGPTWechatBot().start();
 	}
 }
