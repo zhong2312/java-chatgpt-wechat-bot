@@ -44,3 +44,7 @@ itchat4j 增加了一些基本属性：群名称、发送用户名称等。
 3.支持在线停启
 4.支持对话调度等。
 ```
+
+## Console模式截图
+
+![image](https://github.com/zhong2312/java-chatgpt-wechat-bot/blob/main/img/console.jpg)
