@@ -3,6 +3,10 @@ package org.zhong.chatgpt.wechat.bot.sensitive;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.zhong.chatgpt.wechat.bot.config.BotConfig;
+
 import cn.hutool.core.io.file.FileReader;
 
 /**
@@ -11,12 +15,18 @@ import cn.hutool.core.io.file.FileReader;
  *
  */
 public class SensitiveWord {
-
+	
+	private static Logger logger = LoggerFactory.getLogger(SensitiveWord.class);
+	
 	private static List<String> words = new ArrayList<String>();
 	
 	static {
-        FileReader fileReader = new FileReader("dict.txt");
-        words = fileReader.readLines();
+		try {
+			FileReader fileReader = new FileReader(BotConfig.getDictPath());
+	        words = fileReader.readLines();
+		} catch (Exception e) {
+			logger.warn("读取敏感词配置失败");
+		}
 	}
 	
 	/**

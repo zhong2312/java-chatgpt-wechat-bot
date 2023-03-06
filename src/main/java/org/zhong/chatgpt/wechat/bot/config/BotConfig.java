@@ -30,6 +30,8 @@ public class BotConfig {
 	
 	private static Boolean proxyEnable = false;
 	
+	private static String dictPath = "classpath:dict.txt";
+	
 	private static List<String> groupWhiteList = new ArrayList<String>(); 
 	
 	private static List<String> userWhiteList = new ArrayList<String>(); 
@@ -43,6 +45,7 @@ public class BotConfig {
 		if(StringUtils.isNotEmpty(rootConfigPath)) {
 			groupWhiteListPath = rootConfigPath + "/groupWhiteList.txt";
 			userWhiteListPath = rootConfigPath + "/userWhiteList.txt";
+			dictPath = rootConfigPath + "/dict.txt";
 			try {
 				applicationStream = new FileInputStream(new File(rootConfigPath + "/application.yml"));
 			} catch (FileNotFoundException e) {
@@ -152,6 +155,16 @@ public class BotConfig {
 	public static void setProxyEnable(Boolean proxyEnable) {
 		BotConfig.proxyEnable = proxyEnable;
 	}
+
+	public static String getDictPath() {
+		return dictPath;
+	}
+
+	public static void setDictPath(String dictPath) {
+		BotConfig.dictPath = dictPath;
+	}
+	
+	
 
 
 	
