@@ -47,7 +47,7 @@ public class OpenAiServiceBuilder {
                 .hostnameVerifier(SSLSocketClientUtil.getHostnameVerifier());//忽略校验
         
         if(BotConfig.getProxyEnable()) {
-        	Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("127.0.0.1", 33211));
+        	Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(BotConfig.getProxyHost(), BotConfig.getProxyPort()));
         	builder.proxy(proxy);
         }
         
