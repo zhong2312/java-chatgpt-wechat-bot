@@ -1,19 +1,19 @@
 ## 简介
- java版消息自动回复机器人、支持多种消息接收、回复、发送渠道。
- 通过Bot可以构建多种不同的组合。
- 目前已实现的有：
- ChatGPT+微信：支持连续语境对话
- OpenAI(gpt3)+微信
- ChatGPT+控制台：一般用于测试。使用控制台作为消息接收和发送的渠道
+ java版消息自动回复机器人、支持多种消息接收、回复、发送渠道。<br>
+ 通过Bot可以构建多种不同的组合。<br>
+ 目前已实现的有：<br>
+ ChatGPT+微信(支持连续语境对话)<br>
+ OpenAI(gpt3)+微信<br>
+ ChatGPT+控制台(一般用于测试。使用控制台作为消息接收和发送的渠道)<br>
  
 ## 使用
 
-application.yml
-配置bot.appkey 、bot.botName、bot.wechat.qrcode.path 启动BotStarter.java即可。
-二维码存放路径需要自己新建一下文件夹
+application.yml<br>
+配置bot.appkey 、bot.botName、bot.wechat.qrcode.path 启动BotStarter.java即可。<br>
+二维码存放路径需要自己新建一下文件夹<br>
 
-groupWhiteList.txt 群聊白名单配置，不配置默认不处理全部群消息
-userWhiteList.txt  私聊白名单配置，不配置默认回复所有私聊消息
+groupWhiteList.txt 群聊白名单配置，不配置默认不处理全部群消息<br>
+userWhiteList.txt  私聊白名单配置，不配置默认回复所有私聊消息<br>
 
 ```
 Bot.buildChatGPTWechatBot().start(); //使用ChatGPT
