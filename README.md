@@ -15,6 +15,9 @@ application.yml
 groupWhiteList.txt 群聊白名单配置，不配置默认不处理全部群消息
 userWhiteList.txt  私聊白名单配置，不配置默认回复所有私聊消息
 
+如果打包为jar启动，则可以把配置文件复制到任意目录，然后在启动参数中指定根目录如：
+java -jar bot.jar -Dbot.appKey=xxxx -DrootConfigPath=D:\botConfig
+
 ```
 Bot.buildChatGPTWechatBot().start(); //使用ChatGPT
 Bot.buildOpenAIWechatBot().start(); //使用openAI(GPT3)

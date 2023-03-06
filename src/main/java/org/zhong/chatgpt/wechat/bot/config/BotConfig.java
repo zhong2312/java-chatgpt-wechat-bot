@@ -1,5 +1,9 @@
 package org.zhong.chatgpt.wechat.bot.config;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -31,19 +35,34 @@ public class BotConfig {
 	private static List<String> userWhiteList = new ArrayList<String>(); 
 	
 	static {
+		String rootConfigPath = System.getProperty("rootConfigPath");
+		String groupWhiteListPath = "classpath:groupWhiteList.txt";
+		String userWhiteListPath = "classpath:userWhiteList.txt";
+		InputStream applicationStream = BotConfig.class.getResourceAsStream("/application.yml");
 		
-		FileReader groupFileReader = new FileReader("groupWhiteList.txt");
+		if(StringUtils.isNotEmpty(rootConfigPath)) {
+			groupWhiteListPath = rootConfigPath + "/groupWhiteList.txt";
+			userWhiteListPath = rootConfigPath + "/userWhiteList.txt";
+			try {
+				applicationStream = new FileInputStream(new File(rootConfigPath + "/application.yml"));
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		FileReader groupFileReader = new FileReader(groupWhiteListPath);
 		groupWhiteList = groupFileReader.readLines();
 		
-		FileReader userFileReader = new FileReader("userWhiteList.txt");
+		FileReader userFileReader = new FileReader(userWhiteListPath);
 		userWhiteList = userFileReader.readLines();
 		
 		final Yaml yaml = new Yaml();
-		Map<String, Object> yamlMap = yaml.load(BotConfig.class.getResourceAsStream("/application.yml"));
+		Map<String, Object> yamlMap = yaml.load(applicationStream);
 
 		botName = yamlMap.get("bot.botName").toString();
 		qrcodePath = yamlMap.get("bot.wechat.qrcode.path").toString();
-		Object objAppKey = yamlMap.get("bot.appkey");
+		Object objAppKey = yamlMap.get("bot.appKey");
 		
 		Object enable = yamlMap.get("proxy.enable");
 		if(enable != null) {
@@ -118,11 +137,11 @@ public class BotConfig {
 		BotConfig.proxyHost = proxyHost;
 	}
 
-	public static int getProxyPost() {
+	public static int getProxyPort() {
 		return proxyPort;
 	}
 
-	public static void setProxyPost(int proxyPost) {
+	public static void setProxyPort(int proxyPost) {
 		BotConfig.proxyPort = proxyPost;
 	}
 

@@ -8,7 +8,7 @@ spring:
 #机器人微信nickName
 bot.botName: 狂追风龙少
 #Openai的appkey
-bot.appkey: 
+bot.appKey: 
 #微信登录二维码生成路径
 bot.wechat.qrcode.path: D://itchat4j/login
 
