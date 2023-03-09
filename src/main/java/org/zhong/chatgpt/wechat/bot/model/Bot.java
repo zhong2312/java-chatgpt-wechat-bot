@@ -1,5 +1,7 @@
 package org.zhong.chatgpt.wechat.bot.model;
 
+import org.zhong.chatgpt.wechat.bot.msgprocess.ACSAcceptor;
+import org.zhong.chatgpt.wechat.bot.msgprocess.ACSSendProcessor;
 import org.zhong.chatgpt.wechat.bot.msgprocess.ChatGPTReplyProcessor;
 import org.zhong.chatgpt.wechat.bot.msgprocess.ConsoleSendProcessor;
 import org.zhong.chatgpt.wechat.bot.msgprocess.ConsoleMsgAcceptor;
@@ -53,6 +55,14 @@ public class Bot {
 				.replyProcessor(new ChatGPTReplyProcessor())
 				.sendProcessor(new ConsoleSendProcessor())
 				.msgAcceptor(new ConsoleMsgAcceptor());
+	}
+	
+	public static Bot buildChatGPTAutoBot() {
+		return builder()
+				.msgPreProcessor(new MsgPreProcessor())
+				.replyProcessor(new ChatGPTReplyProcessor())
+				.sendProcessor(new ACSSendProcessor())
+				.msgAcceptor(new ACSAcceptor());
 	}
 	
 	public Bot msgPreProcessor(MsgProcessor msgPreProcessor) {

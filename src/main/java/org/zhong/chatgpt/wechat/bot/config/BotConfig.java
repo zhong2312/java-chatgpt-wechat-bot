@@ -64,7 +64,7 @@ public class BotConfig {
 		Map<String, Object> yamlMap = yaml.load(applicationStream);
 
 		botName = yamlMap.get("bot.botName").toString();
-		qrcodePath = yamlMap.get("bot.wechat.qrcode.path").toString();
+		Object objQrcodePath = yamlMap.get("bot.wechat.qrcode.path");
 		Object objAppKey = yamlMap.get("bot.appKey");
 		
 		Object enable = yamlMap.get("proxy.enable");
@@ -82,8 +82,18 @@ public class BotConfig {
 		}else {
 			appKey = objAppKey.toString();
 		}
+		
+		if(objQrcodePath == null) {
+			qrcodePath = System.getProperty("bot.wechat.qrcode.path");
+		}else {
+			qrcodePath = objQrcodePath.toString();
+		}
+		
+		if(StringUtils.isEmpty(qrcodePath)) {
+			qrcodePath = System.getProperty("user.dir");
+		}
 	}
-
+	
 	public static String getBotName() {
 		return botName;
 	}

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.7.8</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.zhong.chatgpt.wechat.bot</groupId>
 	<artifactId>java-chatgpt-wechat-bot</artifactId>
@@ -16,187 +17,168 @@
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
-	
+
 	<dependencies>
-	
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
-		
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-cache</artifactId>
-        </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-        
-         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-        </dependency>
-        <dependency> <!-- 桥接：告诉Slf4j使用Log4j2 -->
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.lmax/disruptor -->
-        <dependency>
-            <groupId>com.lmax</groupId>
-            <artifactId>disruptor</artifactId>
-            <version>3.4.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-
-        <!--模板渲染-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-freemarker</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.66</version>
-        </dependency>
-        
-         <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
-		<dependency>
-		    <groupId>org.apache.httpcomponents</groupId>
-		    <artifactId>httpclient</artifactId>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
 		</dependency>
-		
-		<dependency>  
-	        <groupId>org.apache.httpcomponents</groupId>  
-	        <artifactId>httpmime</artifactId>  
-	    </dependency>  
-	    
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+		</dependency>
+		<dependency> <!-- 桥接：告诉Slf4j使用Log4j2 -->
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.lmax/disruptor -->
+		<dependency>
+			<groupId>com.lmax</groupId>
+			<artifactId>disruptor</artifactId>
+			<version>3.4.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+
+		<!--模板渲染 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-freemarker</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.66</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-lang3</artifactId>
-		    <version>3.0</version>
-		</dependency>
-		
-		<!-- emoji -->
-		<dependency>
-		  <groupId>com.vdurmont</groupId>
-		  <artifactId>emoji-java</artifactId>
-		  <version>3.2.0</version>
-		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/javax.activation/activation -->
-		<dependency>
-		    <groupId>javax.activation</groupId>
-		    <artifactId>activation</artifactId>
-		    <version>1.1.1</version>
-		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/junit/junit -->
-		<dependency>
-		    <groupId>junit</groupId>
-		    <artifactId>junit</artifactId>
-		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
-		<dependency>  
-		    <groupId>org.slf4j</groupId>  
-		    <artifactId>slf4j-api</artifactId>  
-		</dependency> 
-		 
-		<dependency>  
-		    <groupId>org.slf4j</groupId>  
-		    <artifactId>slf4j-log4j12</artifactId>  
-		</dependency> 
-		 
-		<dependency>  
-		    <groupId>log4j</groupId>  
-		    <artifactId>log4j</artifactId>  
-		    <version>1.2.16</version>  
-		</dependency> 
-		
-		<!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp -->
-		<dependency>
-		    <groupId>com.squareup.okhttp3</groupId>
-		    <artifactId>okhttp</artifactId>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.0</version>
 		</dependency>
 
-        <dependency>
-		    <groupId>cn.hutool</groupId>
-		    <artifactId>hutool-all</artifactId>
-		    <version>5.8.12</version>
+		<!-- emoji -->
+		<dependency>
+			<groupId>com.vdurmont</groupId>
+			<artifactId>emoji-java</artifactId>
+			<version>3.2.0</version>
 		</dependency>
-		
+
+		<!-- https://mvnrepository.com/artifact/javax.activation/activation -->
 		<dependency>
-            <groupId>net.dreamlu</groupId>
-            <artifactId>mica-http</artifactId>
-            <version>2.7.6</version>
-        </dependency>
-        
-		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-collections4</artifactId>
-		    <version>4.1</version>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1.1</version>
 		</dependency>
-		   <!-- -->
-		    <dependency>
-		    <groupId>com.theokanning.openai-gpt3-java</groupId>
-		    <artifactId>client</artifactId>
-		    <version>0.11.0</version>       
-		   </dependency> 
-		  <dependency>
-		    <groupId>com.theokanning.openai-gpt3-java</groupId>
-		    <artifactId>service</artifactId>
-		    <version>0.11.0</version>       
-		   </dependency> 
-		<!-- 
+
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
-	      <groupId>com.theokanning.openai-gpt3-java</groupId>
-	      <artifactId>api</artifactId>
-	      <version>0.9.0</version>
-	      <scope>compile</scope>
-	    </dependency>
-	    
-	    <dependency>
-	      <groupId>com.squareup.retrofit2</groupId>
-	      <artifactId>retrofit</artifactId>
-	      <version>2.9.0</version>
-	      <scope>compile</scope>
-	    </dependency>
-	    
-	    <dependency>
-	      <groupId>com.squareup.retrofit2</groupId>
-	      <artifactId>adapter-rxjava2</artifactId>
-	      <version>2.9.0</version>
-	    </dependency>
-	    
-	    <dependency>
-	      <groupId>com.squareup.retrofit2</groupId>
-	      <artifactId>converter-jackson</artifactId>
-	      <version>2.9.0</version>
-	    </dependency> -->
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp -->
+		<dependency>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>okhttp</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+			<version>5.8.12</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.dreamlu</groupId>
+			<artifactId>mica-http</artifactId>
+			<version>2.7.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.1</version>
+		</dependency>
+		<!-- -->
+		<dependency>
+			<groupId>com.theokanning.openai-gpt3-java</groupId>
+			<artifactId>client</artifactId>
+			<version>0.11.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.theokanning.openai-gpt3-java</groupId>
+			<artifactId>service</artifactId>
+			<version>0.11.0</version>
+		</dependency>
+		<!-- <dependency> <groupId>com.theokanning.openai-gpt3-java</groupId> <artifactId>api</artifactId> 
+			<version>0.9.0</version> <scope>compile</scope> </dependency> <dependency> 
+			<groupId>com.squareup.retrofit2</groupId> <artifactId>retrofit</artifactId> 
+			<version>2.9.0</version> <scope>compile</scope> </dependency> <dependency> 
+			<groupId>com.squareup.retrofit2</groupId> <artifactId>adapter-rxjava2</artifactId> 
+			<version>2.9.0</version> </dependency> <dependency> <groupId>com.squareup.retrofit2</groupId> 
+			<artifactId>converter-jackson</artifactId> <version>2.9.0</version> </dependency> -->
 
 	</dependencies>
 
@@ -205,6 +187,83 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>appassembler-maven-plugin</artifactId>
+				<version>2.1.0</version>
+				<configuration>
+					<platforms>
+						<platform>unix</platform>
+						<platform>windows</platform>
+					</platforms>
+					<!--包的存放路劲 -->
+					<assembleDirectory>${project.build.directory}/${project.name}</assembleDirectory>
+					<repositoryName>lib</repositoryName>
+					<!--启动脚本目录 -->
+					<binFolder>bin</binFolder>
+					<!--配置文件路径 -->
+					<configurationDirectory>conf</configurationDirectory>
+					<!--是否copy配置文件 -->
+					<copyConfigurationDirectory>true</copyConfigurationDirectory>
+					<!--从哪里copy配置文件 -->
+					<configurationSourceDirectory>src/main/resources</configurationSourceDirectory>
+					<includeConfigurationDirectoryInClasspath>true</includeConfigurationDirectoryInClasspath>
+					<!--flat 表示直接将jar放到lib 里面 -->
+					<repositoryLayout>flat</repositoryLayout>
+					<encoding>UTF-8</encoding>
+					<logsDirectory>logs</logsDirectory>
+					<tempDirectory>tmp</tempDirectory>
+					<programs>
+						<program>
+							<mainClass>org.zhong.chatgpt.wechat.bot.BotStarter</mainClass>
+							<id>chatgpt-wechat-bot</id>
+							<jvmSettings>
+								<extraArguments>
+									<extraArgument>-server</extraArgument>
+									<extraArgument>-Xms512M</extraArgument>
+									<extraArgument>-Xmx512M</extraArgument>
+									<extraArgument>-Xss512k</extraArgument>
+									<extraArgument>-Xloggc:@BASEDIR@/logs/chatgpt-wechat-bot_gc.log</extraArgument>
+									<extraArgument>-verbose:gc</extraArgument>
+									<extraArgument>-XX:+HeapDumpOnOutOfMemoryError</extraArgument>
+									<extraArgument>-XX:HeapDumpPath=@BASEDIR@/logs/java_heapdump.hprof</extraArgument>
+								</extraArguments>
+							</jvmSettings>
+						</program>
+					</programs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+			    <configuration>
+	                <descriptors>
+	                    <descriptor>src/main/assembly/assembly.xml</descriptor>
+	                </descriptors>
+	            </configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<archive>
+								<manifest>
+									<mainClass>
+										org.zhong.chatgpt.wechat.bot.BotStarter
+									</mainClass>
+								</manifest>
+							</archive>
+							<descriptorRefs>
+								<descriptorRef>jar-with-dependencies</descriptorRef>
+							</descriptorRefs>
+							
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

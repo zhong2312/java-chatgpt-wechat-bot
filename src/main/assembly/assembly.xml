@@ -1,0 +1,59 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd
+http://maven.apache.org/ASSEMBLY/2.0.0 ">
+
+    <!--唯一ID-->
+    <id>assembly_test</id>
+
+    <!--打包格式，允许同时有多个-->
+    <formats>
+        <format>tar.gz</format>
+        <format>dir</format>
+        <format>zip</format>
+    </formats>
+
+    <!--依赖jar包以及项目打包文件存储文件-->
+    <dependencySets>
+        <dependencySet>
+            <!--存储在projectName-assembly-version/lib下-->
+            <outputDirectory>lib</outputDirectory>
+        </dependencySet>
+    </dependencySets>
+
+    <fileSets>
+        <fileSet>
+            <!--目录路径，如果不在这里指定，而在include中指定，那么其文件夹的也会被带进去-->
+            <directory>src/main/bin/</directory>
+            <includes>
+                <!--要哪些文件-->
+                <include>*.*</include>
+            </includes>
+            <excludes>
+                <!--不要哪些文件-->
+                <exclude>*.no_need</exclude>
+            </excludes>
+            <!--文件的权限-->
+            <fileMode>0755</fileMode>
+            <!--输出目录 存储在projectName-assembly-version/bin下-->
+            <outputDirectory>bin</outputDirectory>
+            <directoryMode>0755</directoryMode>
+
+        </fileSet>
+    </fileSets>
+
+    <files>
+        <!--针对单个文件-->
+        <file>
+            <!--源文件地址，相对于项目地址-->
+            <source>pom.xml</source>
+            <!--输出目录为projectName-assembly-version/-->
+            <outputDirectory>.</outputDirectory>
+            <!--文件的权限-->
+            <fileMode>0755</fileMode>
+            <!--重命名为-->
+            <destName>pom.xml</destName>
+        </file>
+    </files>
+
+</assembly>

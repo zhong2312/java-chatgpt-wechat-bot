@@ -10,4 +10,9 @@ public class TestBot {
 	public void test() {
 		Bot.buildChatGPTConsoleBot().start();
 	}
+	
+	@Test
+	public void testAutoBot() {
+		Bot.buildChatGPTAutoBot().start();
+	}
 }

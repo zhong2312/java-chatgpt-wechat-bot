@@ -10,7 +10,7 @@ bot.botName: 狂追风龙少
 #Openai的appkey
 bot.appKey: 
 #微信登录二维码生成路径
-bot.wechat.qrcode.path: D://itchat4j/login
+bot.wechat.qrcode.path: 
 
 #ai模型配置 参考https://platform.openai.com/examples
 bot.openai.completio.model: text-davinci-003

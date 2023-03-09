@@ -18,10 +18,13 @@ userWhiteList.txt  私聊白名单配置，不配置默认回复所有私聊消�
 如果打包为jar启动，则可以把配置文件复制到任意目录，然后在启动参数中指定根目录如：
 java  -Dbot.appKey=xxx -DrootConfigPath=D:\botConfig -jar bot.jar
 
+mvn package appassembler:assemble -Dmaven.test.skip=true
+
 ```
 Bot.buildChatGPTWechatBot().start(); //使用ChatGPT
 Bot.buildOpenAIWechatBot().start(); //使用openAI(GPT3)
 Bot.buildChatGPTConsoleBot().start();//使用控制台作为消息输入输出(目前只支持Eclipse)
+Bot.buildChatGPTAutoBot().start();//创建一个自言自语的机器人
 
 API被墙了，需要使用代理，在application.yml文件配置代理：
 #代理设置
