@@ -18,6 +18,14 @@ public class MsgPreProcessor implements MsgProcessor{
 	
 	public void process(BotMsg botMsg) {
 		BaseMsg baseMsg = botMsg.getBaseMsg();
+		String fromUserNickName = baseMsg.getFromUserNickName();
+		if(StringUtils.isNotEmpty(fromUserNickName)
+				&&(	fromUserNickName.contains("微信支付")
+						|| fromUserNickName.contains("文件传输助手")
+						|| fromUserNickName.contains("微信团队"))) {
+			//忽略系统消息
+			return;
+		}
 		
 		if((baseMsg.isGroupMsg() && timedCache.get(baseMsg.getGroupUserName()) != null)
 				|| (!baseMsg.isGroupMsg() && timedCache.get(baseMsg.getFromUserName()) != null)) {
@@ -79,13 +87,14 @@ public class MsgPreProcessor implements MsgProcessor{
 				}
 				
 				WehchatMsgQueue.pushSendMsg(botMsg);
-			}else {
-				WehchatMsgQueue.pushReplyMsg(botMsg);
+				return;
 			}
 			
+			WehchatMsgQueue.pushReplyMsg(botMsg);
+			
 		}else {
-			botMsg.setReplyMsg("目前我只能针对文本消息进行回答");
-			WehchatMsgQueue.pushSendMsg(botMsg);
+//			botMsg.setReplyMsg("目前我只能针对文本消息进行回答");
+//			WehchatMsgQueue.pushSendMsg(botMsg);
 		}
 	}
 }

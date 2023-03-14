@@ -97,10 +97,14 @@ public class MsgCenter {
 					m.put("groupMsg", true);
 				}
 			} else {
-				String fromUserNickName = groupNameMap.get(m.getString("FromUserName"));
+				String fromUserNickName = nickNameMap.get(m.getString("FromUserName"));
 				if(StringUtils.isEmpty(fromUserNickName)) {
 					Map<String, JSONObject> userInfoMap = core.getUserInfoMap();
-					groupNameMap.put(m.getString("FromUserName"), fromUserNickName);
+					JSONObject userObj = userInfoMap.get(m.getString("FromUserName"));
+					if(userObj != null) {
+						fromUserNickName = userObj.getString("NickName");
+					}
+					
 				}
 				m.put("fromUserNickName", fromUserNickName);
 				CommonTools.msgFormatter(m, "Content");
