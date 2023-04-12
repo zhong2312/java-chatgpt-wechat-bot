@@ -37,7 +37,21 @@ public class ChatGPTReplyProcessor implements MsgProcessor{
 	 */
 	private static Map<String, FifoLinkedList<ChatMessage>> mgsMap = new TreeMap<>();
 
-	private static ChatMessage systemMessage = new ChatMessage(ChatMessageRole.SYSTEM.value(), "你是一个非常强大、全面的人工智能助手，可以准确地回答我的问题。");
+	private static ChatMessage systemMessage;
+	
+	private static String deafualt = "你是一个非常强大、全面的人工智能助手，可以准确地回答我的问题。";
+	
+	public ChatGPTReplyProcessor() {
+		systemMessage = new ChatMessage(ChatMessageRole.SYSTEM.value(), deafualt);
+	}
+		
+	public ChatGPTReplyProcessor(String sysPrompt) {
+		if(sysPrompt != null) {
+			systemMessage = new ChatMessage(ChatMessageRole.SYSTEM.value(), sysPrompt);
+		}else {
+			systemMessage = new ChatMessage(ChatMessageRole.SYSTEM.value(), deafualt);
+		}
+	}
 	
 	@Override
 	public void process(BotMsg botMsg) {

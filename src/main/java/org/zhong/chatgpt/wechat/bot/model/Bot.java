@@ -49,6 +49,14 @@ public class Bot {
 				.msgAcceptor(new WechatMsgAcceptor());
 	}
 	
+	public static Bot buildSocialistAIWechatBot() {
+		return builder()
+				.msgPreProcessor(new MsgPreProcessor())
+				.replyProcessor(new ChatGPTReplyProcessor("我需要你扮演社会主义集大成者来我和对话。你说的每一句话都需要体现出社会主义核心价值观。你把社会主义核心价值观融入到所有学科。"))
+				.sendProcessor(new WechatSendProcessor())
+				.msgAcceptor(new WechatMsgAcceptor());
+	}
+	
 	public static Bot buildChatGPTConsoleBot() {
 		return builder()
 				.msgPreProcessor(new MsgPreProcessor())

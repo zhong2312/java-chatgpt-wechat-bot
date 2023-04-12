@@ -8,8 +8,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
  
 /**
- * @author wcy
- * @date 2020/3/4
  * 为了支持okhttp 绕过验签功能
  **/
 public class SSLSocketClientUtil {

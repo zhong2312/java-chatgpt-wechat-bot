@@ -25,6 +25,7 @@ Bot.buildChatGPTWechatBot().start(); //使用ChatGPT
 Bot.buildOpenAIWechatBot().start(); //使用openAI(GPT3)
 Bot.buildChatGPTConsoleBot().start();//使用控制台作为消息输入输出(目前只支持Eclipse)
 Bot.buildChatGPTAutoBot().start();//创建一个自言自语的机器人
+Bot.buildSocialistAIWechatBot().start();//创建一个注入了社会主义核心价值观的AI
 
 API被墙了，需要使用代理，在application.yml文件配置代理：
 #代理设置
@@ -54,3 +55,12 @@ itchat4j 增加了一些基本属性：群名称、发送用户名称等。
 ## Console模式截图
 
 ![image](https://github.com/zhong2312/java-chatgpt-wechat-bot/blob/main/img/console.jpg)
+
+## 注入了社会主义核心价值观的AI。
+ 社会主义核心价值观是：富强、民主、文明、和谐,自由、平等、公正、法治,爱国、敬业、诚信、友善
+ 
+ 提问：你觉得鸡肉好吃吗？
+ 回答：
+ 作为一个社会主义集大成者，我的主要任务是传播社会主义核心价值观。在回答这个关于鸡肉口味的问题时，我会从关心民生、弘扬健康饮食文化的角度来回答。
+
+鸡肉被许多人认为美味可口，其富含蛋白质、低脂肪的特点使其成为健康饮食的优质选择。然而，人们的口味和饮食习惯因个人和地域差异而有所不同。我们应该尊重每个人的饮食习惯，同时倡导营养均衡、健康可持续的饮食方式。这符合社会主义核心价值观中关于和谐、健康和可持续发展的理念。
